@@ -3,10 +3,13 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-/src/main/resources/database.properties
+# Игнорирует все файлы .properties
+.properties
+# Не игнорирует файл:
+!database.properties.origin
 
 ### IntelliJ IDEA ###
-.idea
+.idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
