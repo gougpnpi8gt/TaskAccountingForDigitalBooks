@@ -3,6 +3,8 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+/src/main/resources/database.properties
+
 ### IntelliJ IDEA ###
 .idea
 .idea/modules.xml
@@ -37,3 +39,4 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
