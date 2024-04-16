@@ -11,6 +11,7 @@ import ru.vadim.springlibrary.entity.Person;
 import ru.vadim.springlibrary.service.BooksService;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -40,12 +41,12 @@ public class ControllerBook {
                        Model model,
                        @ModelAttribute("person") Person person){
         model.addAttribute("book", booksService.findById(id));
-        //Optional<Person> owner = booksService.findOnwerByBook(id);
-        //if (owner.isPresent()) {
-            //model.addAttribute("owner", owner.get());
-        //} else {
-        //    model.addAttribute("people", booksService.findAll());
-        //}
+        Optional<Person> owner = booksService.findOwner(id);
+        if (owner.isPresent()) {
+            model.addAttribute("owner", owner.get());
+        } else {
+            model.addAttribute("people", booksService.findAll(true));//?
+        }
         return "allBooks/show";
     }
     @GetMapping("/{id}/edit")
@@ -94,9 +95,10 @@ public class ControllerBook {
         return "allBooks/search";
     }
 
-    @PatchMapping("/search")
-    public String searchBook(Model model){
-        // логика
+    @PostMapping("/search")
+    public String searchBook(@RequestParam("name") String name, Model model){
+        List<Book> books = booksService.searchBookBeginWithName(name);
+        model.addAttribute("books", books);
         return "allBooks/search";
     }
 }

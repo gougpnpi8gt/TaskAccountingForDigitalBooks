@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Главное меню</title>
+    <title> Главное меню</title>
 </head>
 <body>
 
+<a th:text="Приветствую, библиотека имеет два раздела: &ampЛюди&amp и &ampКниги&amp. Выберите раздел, который вам интересен.">Hello</a>
+
 <a href="/people">Нажмите, чтобы перейти к разделу с людьми</a>
 <p>
-    
+
 </p>
 <a href="/books">Нажмите, чтобы перейти к разделу с книгами</a>
 

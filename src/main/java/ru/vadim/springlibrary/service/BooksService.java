@@ -49,6 +49,7 @@ public class BooksService {
     @Transactional
     public void update(int id, Book updatedBook) {
         updatedBook.setId(id);
+        updatedBook.setOwner(booksRepository.findById(id).get().getOwner());
         booksRepository.save(updatedBook);
     }
 
@@ -57,8 +58,11 @@ public class BooksService {
         booksRepository.save(book);
     }
 
-    public Person findOnwer(int id) {
-        return null;
+    public Optional<Person> findOwner(int id) {
+        // Здесь Hibernate.initialize() не нужен,
+        // так как владелец (сторона One) загружается не лениво
+        return booksRepository.findById(id)
+                .map(Book::getOwner);
     }
 
     @Transactional
@@ -71,6 +75,12 @@ public class BooksService {
         Book book = findById(bookId);
         book.setOwner(owner);
         booksRepository.save(book);
+        //        booksRepository.findById(id).ifPresent(
+//                book -> {
+//                    book.setOwner(selectedPerson);
+//                    book.setTakenAt(new Date()); // текущее время
+//                }
+//        );
     }
 
     @Transactional
@@ -78,5 +88,13 @@ public class BooksService {
         Book book = booksRepository.findById(id).get();
         book.setOwner(null);
         booksRepository.save(book);
+
     }
+
+    public List<Book> searchBookBeginWithName(String name) {
+        List<Book> books = booksRepository.findByTitleStartingWith(name);
+        return books;
+    }
+
+
 }

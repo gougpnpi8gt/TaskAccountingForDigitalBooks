@@ -9,10 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a85481b-9a91-4931-8a69-b063984b5a20" name="Changes" comment="commit">
+    <list default="true" id="2a85481b-9a91-4931-8a69-b063984b5a20" name="Changes" comment="Первый коммит, добавление метода search">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/fcd437c9-d91c-4e04-99fa-343de437c1ce.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fcd437c9-d91c-4e04-99fa-343de437c1ce.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/fcd437c9-d91c-4e04-99fa-343de437c1ce/storage_v2/_src_/database/Library.m7wgbQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/fcd437c9-d91c-4e04-99fa-343de437c1ce/storage_v2/_src_/database/Library.m7wgbQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Проект№1ТЗ.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/controllers/ControllerBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/controllers/ControllerBook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/entity/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/entity/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/entity/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/repository/BooksRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/repository/BooksRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/service/BooksService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/vadim/springlibrary/service/BooksService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/database.properties.origin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allBooks/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/allBooks/search.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +30,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -59,12 +68,13 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
+    "Maven.Project1 [clean].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Tomcat Server.Tomcat 10.1.19.executor": "Run",
     "Tomcat Server.Tomcat 9.0.86.executor": "Run",
-    "git-widget-placeholder": "branch1",
+    "git-widget-placeholder": "branch2",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "D:/Projects/Project1",
     "node.js.detected.package.eslint": "true",
@@ -88,6 +98,7 @@
   </component>
   <component name="RunManager">
     <configuration name="Tomcat 9.0.86" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.86" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/people" />
       <option name="UPDATING_POLICY" value="redeploy-artifacts" />
       <deployment>
         <artifact name="Project1:war exploded">
@@ -200,6 +211,9 @@
       <workItem from="1712820366094" duration="355000" />
       <workItem from="1712822945567" duration="2072000" />
       <workItem from="1712844695240" duration="313000" />
+      <workItem from="1712850101289" duration="3667000" />
+      <workItem from="1713196249372" duration="741000" />
+      <workItem from="1713253268738" duration="15944000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -209,7 +223,31 @@
       <option name="project" value="LOCAL" />
       <updated>1712828384418</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit1">
+      <option name="closed" value="true" />
+      <created>1712846630612</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712846630612</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Внесение изменений перед работой с Hibernate">
+      <option name="closed" value="true" />
+      <created>1713254509715</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1713254509715</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Первый коммит, добавление метода search">
+      <option name="closed" value="true" />
+      <created>1713266772690</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1713266772690</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,6 +266,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+    <MESSAGE value="commit1" />
+    <MESSAGE value="Внесение изменений перед работой с Hibernate" />
+    <MESSAGE value="Первый коммит, добавление метода search" />
+    <option name="LAST_COMMIT_MESSAGE" value="Первый коммит, добавление метода search" />
   </component>
 </project>

@@ -33,10 +33,9 @@ import java.util.Properties;
 @EnableTransactionManagement
 @EnableJpaRepositories("ru.vadim.springlibrary.repository")
 @PropertySource("classpath:hibernate.properties")
-@FieldDefaults(level = AccessLevel.PRIVATE)
 public class SpringConfig implements WebMvcConfigurer {
-    final ApplicationContext applicationContext;
-    final Environment environment;
+    private final ApplicationContext applicationContext;
+    private final Environment environment;
 
     @Autowired
     public SpringConfig(ApplicationContext applicationContext,
@@ -91,14 +90,14 @@ public class SpringConfig implements WebMvcConfigurer {
 
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        final LocalContainerEntityManagerFactoryBean entityManagerFactoryBean =
+        final LocalContainerEntityManagerFactoryBean em =
                 new LocalContainerEntityManagerFactoryBean();
-        entityManagerFactoryBean.setDataSource(dataSource());
-        entityManagerFactoryBean.setPackagesToScan("ru.vadim.springlibrary.entity");
+        em.setDataSource(dataSource());
+        em.setPackagesToScan("ru.vadim.springlibrary.entity");
         final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        entityManagerFactoryBean.setJpaVendorAdapter(vendorAdapter);
-        entityManagerFactoryBean.setJpaProperties(hibernateProperties());
-        return entityManagerFactoryBean;
+        em.setJpaVendorAdapter(vendorAdapter);
+        em.setJpaProperties(hibernateProperties());
+        return em;
     }
 
     @Bean

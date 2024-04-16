@@ -11,8 +11,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Entity
 @Table(name = "Person")
@@ -34,4 +32,13 @@ public class Person {
 
     @OneToMany(mappedBy = "owner")
     List<Book> books;
+
+    public Person() {
+
+    }
+
+    public Person(String fullName, int yearOfBirth) {
+        this.fullName = fullName;
+        this.yearOfBirth = yearOfBirth;
+    }
 }
