@@ -35,6 +35,9 @@
 <form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
     <input type="submit" value="Удалить"/>
 </form>
+<form th:method="GET" th:action="@{/books}">
+    <input type="submit" value="Вернуться в библиотеку"/>
+</form>
 
 </body>
 </html>

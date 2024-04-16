@@ -24,7 +24,5 @@ public class PersonValidator implements org.springframework.validation.Validator
         if (personBook.show(person.getFullName()).isPresent()){
             errors.rejectValue("fullName", "", "This fullName is already taken");
         }
-
-
     }
 }
