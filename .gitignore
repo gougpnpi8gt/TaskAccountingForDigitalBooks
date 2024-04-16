@@ -3,10 +3,9 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-# Игнорирует все файлы .properties
-.properties
-# Не игнорирует файл:
-!database.properties.origin
+
+hibernate.properties
+
 
 ### IntelliJ IDEA ###
 .idea/
@@ -42,4 +41,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-

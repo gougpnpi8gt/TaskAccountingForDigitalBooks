@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -37,6 +38,13 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     Person owner;
+
+    @Column(name = "when_took")
+    @Temporal(TemporalType.TIMESTAMP)
+    Date dateWhenTook;
+
+    @Transient
+    boolean isDelay;
 
     public Book() {
 

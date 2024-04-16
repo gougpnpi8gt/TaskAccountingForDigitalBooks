@@ -12,6 +12,7 @@ import ru.vadim.springlibrary.repository.BooksRepository;
 import ru.vadim.springlibrary.repository.PeopleRepository;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,7 +41,11 @@ public class PeopleService {
     public List<Book> findAllByBooksForPerson(int id) {
         Optional<Person> person = peopleRepository.findById(id);
         if (person.isPresent()) {
-            Hibernate.initialize(person.get().getBooks());
+            person.get().getBooks().forEach(book -> {
+                long diffInMillies = Math.abs(book.getDateWhenTook().getTime() - new Date().getTime());
+                if (diffInMillies > 864000000) // 864000000 милисекунд = 10 суток
+                    book.setDelay(true); // книга просрочена
+            });
             return person.get().getBooks();
         } else {
             return Collections.emptyList();

@@ -11,6 +11,7 @@ import ru.vadim.springlibrary.entity.Book;
 import ru.vadim.springlibrary.entity.Person;
 import ru.vadim.springlibrary.repository.BooksRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,6 +34,7 @@ public class BooksService {
             return booksRepository.findAll();
         }
     }
+
     public List<Book> findAll(Integer page, Integer booksPerPage, boolean year) {
         if (year) {
             return booksRepository.findAll(PageRequest.of(page, booksPerPage, Sort.by("year"))).getContent();
@@ -55,6 +57,7 @@ public class BooksService {
 
     @Transactional
     public void save(Book book) {
+
         booksRepository.save(book);
     }
 
@@ -72,30 +75,24 @@ public class BooksService {
     }
 
     @Transactional
-    public void appointPerson(int bookId, Person owner){
+    public void appointPerson(int bookId, Person owner) {
         Book book = findOneBook(bookId);
         book.setOwner(owner);
+        book.setDateWhenTook(new Date());
         booksRepository.save(book);
-        //        booksRepository.findById(id).ifPresent(
-//                book -> {
-//                    book.setOwner(selectedPerson);
-//                    book.setTakenAt(new Date()); // текущее время
-//                }
-//        );
     }
 
     @Transactional
-    public void release(int id){
+    public void release(int id) {
         Book book = booksRepository.findById(id).get();
         book.setOwner(null);
+        book.setDateWhenTook(null);
         booksRepository.save(book);
 
     }
 
     public List<Book> searchBookBeginWithName(String name) {
         return booksRepository.findByTitleStartingWith(name);
-
     }
-
 
 }

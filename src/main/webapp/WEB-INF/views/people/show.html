@@ -17,10 +17,19 @@
     <b>Книги:</b>
     <br/>
     <table th:each="book : ${books}">
-        <tr th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">book</tr>
+        <tr>
+            <td>
+                <span th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}"
+                      th:style="${book.isDelay()} ? 'color: red' : 'color: black'">
+                    book
+                </span>
+            </td>
+        </tr>
     </table>
     <hr/>
 </div>
+
+
 <form th:method="GET" th:action="@{/people/{id}/edit(id=${person.getId()})}">
     <input type="submit" value="Редактировать"/>
 </form>

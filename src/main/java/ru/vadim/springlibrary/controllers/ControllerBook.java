@@ -12,8 +12,6 @@ import ru.vadim.springlibrary.service.BooksService;
 import ru.vadim.springlibrary.service.PeopleService;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping("/books")
