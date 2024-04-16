@@ -3,14 +3,15 @@ package ru.vadim.springlibrary.util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-import ru.vadim.springlibrary.DAO.PersonBook;
-import ru.vadim.springlibrary.models.Person;
+import ru.vadim.springlibrary.entity.Person;
+import ru.vadim.springlibrary.service.PeopleService;
+
 @Component
 public class PersonValidator implements org.springframework.validation.Validator {
-    private final PersonBook personBook;
+    private final PeopleService peopleService;
     @Autowired
-    public PersonValidator(PersonBook personBook) {
-        this.personBook = personBook;
+    public PersonValidator(PeopleService peopleService) {
+        this.peopleService = peopleService;
     }
 
     @Override
@@ -21,7 +22,7 @@ public class PersonValidator implements org.springframework.validation.Validator
     @Override
     public void validate(Object o, Errors errors) {
         Person person = (Person) o;
-        if (personBook.show(person.getFullName()).isPresent()){
+        if (peopleService.findByFullName(person.getFullName()).isPresent()){
             errors.rejectValue("fullName", "", "This fullName is already taken");
         }
     }

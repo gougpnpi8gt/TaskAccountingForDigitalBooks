@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск</title>
+</head>
+<body>
+
+<span>Введите поисковой запрос: </span>
+<form th:method="PATCH" th:action="@{/books/search}">
+<!--    -->
+    <input type="submit" value="Искать!">
+</form>
+
+<div th:if="${book}">
+    <span> Эта книга свободна. Кому назначить её? </span>
+    <form th:method="PATCH" th:action="@{/books/{id}/choose(id=${book.getId()})}">
+        <label for="bookPerson">Выберите человека </label>
+        <select th:object="${person}" th:field="*{id}" id="bookPerson">
+            <option th:each="person : ${people}" th:value="${person.getId()}" th:text="${person.getFullName()}">
+            </option>
+        </select>
+        <input type="submit" value="Назначить книгу">
+    </form>
+</div>
+
+</body>
+</html>
