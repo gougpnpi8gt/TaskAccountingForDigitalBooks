@@ -26,22 +26,22 @@ public class BooksService {
         this.booksRepository = booksRepository;
     }
 
-    public List<Book> findAll(Boolean trueOrFalse) {
-        if (trueOrFalse) {
+    public List<Book> findAll(boolean year) {
+        if (year) {
             return booksRepository.findAll(Sort.by("year"));
         } else {
             return booksRepository.findAll();
         }
     }
-    public List<Book> findAll(Integer page, Integer booksPerPage, Boolean trueOrFalse) {
-        if (trueOrFalse) {
+    public List<Book> findAll(Integer page, Integer booksPerPage, boolean year) {
+        if (year) {
             return booksRepository.findAll(PageRequest.of(page, booksPerPage, Sort.by("year"))).getContent();
         } else {
             return booksRepository.findAll(PageRequest.of(page, booksPerPage)).getContent();
         }
     }
 
-    public Book findById(int id) {
+    public Book findOneBook(int id) {
         Optional<Book> book = booksRepository.findById(id);
         return book.orElse(null);
     }
@@ -58,11 +58,12 @@ public class BooksService {
         booksRepository.save(book);
     }
 
-    public Optional<Person> findOwner(int id) {
-        // Здесь Hibernate.initialize() не нужен,
-        // так как владелец (сторона One) загружается не лениво
-        return booksRepository.findById(id)
-                .map(Book::getOwner);
+    public Person findOwner(int id) {
+        return booksRepository.findById(id).map(Book::getOwner).orElse(null);
+        /* map - Метод map() используется, когда у вас есть объект Optional и нужно выполнить некоторую операцию
+    над содержащимся значением, в результате чего получится другое значение. Он принимает функцию в качестве аргумента.
+    Эта функция применяется к значению внутри Optional, если оно существует.
+         */
     }
 
     @Transactional
@@ -72,7 +73,7 @@ public class BooksService {
 
     @Transactional
     public void appointPerson(int bookId, Person owner){
-        Book book = findById(bookId);
+        Book book = findOneBook(bookId);
         book.setOwner(owner);
         booksRepository.save(book);
         //        booksRepository.findById(id).ifPresent(
@@ -92,8 +93,8 @@ public class BooksService {
     }
 
     public List<Book> searchBookBeginWithName(String name) {
-        List<Book> books = booksRepository.findByTitleStartingWith(name);
-        return books;
+        return booksRepository.findByTitleStartingWith(name);
+
     }
 
 

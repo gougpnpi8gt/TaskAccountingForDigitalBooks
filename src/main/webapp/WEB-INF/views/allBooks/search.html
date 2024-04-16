@@ -6,12 +6,14 @@
 </head>
 <body>
 
-<span>Введите поисковой запрос: </span>
 <form th:method="POST" th:action="@{/books/search}">
-    <label for="title"></label>
-    <input type="text"  name="title" id="title"/>
-    <input type="submit" value="Искать!">
+    <label for="query">Введите поисковой запрос: </label>
+    <input type="text" name="query" id="query" />
+<!--    Почему в качестве name подошло слово query, а не тоже name-->
+    <br/>
+    <input type="submit" value="Искать!"/>
 </form>
+
 <div th:if="${books.isEmpty()}">
     <span>Книг не найдено</span>
 </div>
@@ -28,6 +30,6 @@
         </div>
     </div>
 </div>
-
+<a href="/books">Назад</a>
 </body>
 </html>
